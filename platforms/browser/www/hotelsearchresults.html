@@ -177,18 +177,21 @@ request.setRequestHeader('X-Auth-Token', 'c3ccb386-57d2');
 
 request.onreadystatechange = function () {
   if (this.readyState === 4) {
-    console.log('Status:', this.status);
+    <!-- console.log('Status:', this.status); -->
     <!-- console.log('Headers:', this.getAllResponseHeaders()); -->
 	loadhide();
-   <!-- console.log('Body:', this.responseText);  -->
+	state = this.status;
+	<!-- alert(state); -->
+	if(state >= 400){g = "<center><p style='color: white;'>No Hotels Available</p></center>";
+							 $("#wrapper").append(g);}
+							 
+   // console.log('Body:', this.responseText); 
 	data = this.responseText;
 	//console.log(JSON.stringify(data)); 
 	hotels = JSON.parse(data);
 	hotelResultSet = hotels.hotelResultSet;
-	<!-- console.log(hotels); -->
-	<!-- console.log(hotels.length); -->
-	if(this.status== 200)
-	{ 
+	
+	if(state == 200){
 	var tt;
 	for(i in hotelResultSet)
 	{
@@ -213,8 +216,8 @@ request.onreadystatechange = function () {
 	
 	<!-- }}); -->
 	}
-		} else { g = "<center><p style='color: white;'>No Hotels Available</p></center>";
-							 $("#wrapper").append(g);}
+	
+}	
 
   }
 };
@@ -266,10 +269,11 @@ request.send(JSON.stringify(body));
 		<div id="header_home" data-position="fixed" data-tap-toggle="false" data-role="header">
 
             <h1 style="font-family:'Microsoft NeoGothic';text-shadow: none;">DETAILS</h1>
-            <a id="_home" href="#myPanel" onclick="sidemenu();" class="ui-btn-left" data-icon="bars" data-iconpos="notext">Menu</a>
+             <a id="_home" href="#myPanel" onclick="sidemenu();" class="ui-btn-right" data-icon="bars" data-iconpos="notext">Menu</a>
+			 <a id="_home" onclick="back()" class="ui-btn-left" data-icon="arrow-l" data-iconpos="notext">Menu</a>
             <input type="hidden" id="edt_mail" />
         </div>
-		  <div data-role="panel" id="myPanel" data-display="push" data-position="left" data-theme="b">
+		  <div data-role="panel" id="myPanel" data-display="push" data-position="right" data-theme="b">
               <center>
 			 <!-- <a><img id="userPic" style=" border-radius: 50%;" /></a>  -->
 			 <a href="profile.html"><img id="userPic" src="img/profile.png" style="border-radius: 50%;height: 100px;width: 50%;"/></a>

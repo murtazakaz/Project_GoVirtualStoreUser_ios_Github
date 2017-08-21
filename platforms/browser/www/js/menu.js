@@ -19,7 +19,10 @@
 	var country = getParameterByName('country');
 	var contact = getParameterByName('contact');
 	var code = getParameterByName('code');
-	
+	function back(){
+       window.history.go(-1);
+  
+    }
 
 	function op()
 {   
@@ -357,4 +360,5 @@ function disconnectUser() {
     });
 }
 		
-         
+//backbutton for ios
+    
