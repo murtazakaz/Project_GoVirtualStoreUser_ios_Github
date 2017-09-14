@@ -20,4 +20,6 @@
     <allow-intent href="geo:*" />
     <preference name="orientation" value="portrait" />
     <preference name="OverrideUserAgent" value="Mozilla/5.0 Google" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#ffa627" />
 </widget>
